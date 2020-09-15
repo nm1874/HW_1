@@ -1,4 +1,5 @@
 #Collaborators: Zoe, Michelle 
+#Collaborators: Zoe, Michelle 
 
 #1. 
 
@@ -79,35 +80,7 @@ text(5, 4, expression('determinant = 0'), cex=1)
 
 
 
-#Problem #2
-
-v00 <- c(1,0)
-par(mar=c(1,1,1,1)+0.1, pch=20)
-plot(NULL, xlim = c(0,1), ylim = c(0,1), xlab = "team 1", ylab= "team 2",
-     asp =1,axes = FALSE)
-axis(1,pos = 0); axis(2,pos = 0) #axes blow and to the left
-abline(1,-1, col = "red")
-
-F <- matrix(c(0.8, 0.2, 0.3, 0.7),2); F
-#Here is the starting situation.
-arrows(0,0, v00[1], v00[2], col = "blue")
-#Now play the first point.
-v1_ <- F %*% v00; v1_
-arrows(0,0, v1_[1], v1_[2], col = "blue")
-#Next play the second point.
-v2_ <- F %*% v1_; v2_
-arrows(0,0, v2_[1], v2_[2], col = "blue")
-
-#Here is a matrix that updates for two points in a single computation.
-F2 <- F %*% F; F2
-F2 %*% v00; v2_  #it agrees with our previous calculation
-
-#Do two more points.
-v4_ <- F2 %*% v2_
-arrows(0,0, v4_[1], v4_[2], col = "blue")
-
-
-#Problem 3
+#Problem 2
 plot(NULL, xlim = c(-3,3), ylim = c(-3,3), xlab = "", ylab= "",axes = FALSE)
 I1 <- c(-2,2); I2 <- c(-2,-2); I3 <- c(2,2); I4 <- c(2,-2)
 points(c(I1[1],I2[1],I3[1],I4[1]),c(I1[2],I2[2],I3[2],I4[2]))
@@ -129,7 +102,8 @@ c4 <- c(1,1,0,0)
 #Here is the "transition matrix" for this graph.
 A <- cbind(c1,c2,c3,c4); A
 
-B <- A %*% A; B  #do not use A^2 in R
-#Square again to get the number of four-step paths
+B <- A %*% A; B  
+
 C <- B %*% B; C
+
 #There are 7 4-step monorails from Tibet to the Middle Kingdom
